@@ -1,0 +1,12 @@
+### platform.sh environment initialization
+#
+# Statements in this file will be executed (sourced) by the shell in SSH
+# sessions, in deploy hooks, in cron jobs, and in the application's runtime
+# environment at platform.sh
+
+# Allow executable app dependencies from Composer to be run from the path.
+if [ -n "$PLATFORM_APP_DIR" ] ; then
+  export PATH="${PLATFORM_APP_DIR}/vendor/bin:$PATH"
+fi
+
+export PHAPP_ENV=platform-$PLATFORM_BRANCH
